@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_title %}Movie Detail Title{% endblock page_title %}
+
+{% block body %}
+    <h1>Detail filmu: {{ movie.name }}</h1>
+    <h4>Likes: {{ movie.likes }}</h4>
+
+    {% if movie.description %}
+        <p>Description: {{ movie.description }}</p>
+    {% endif %}
+
+    {% if movie.genres.all %}
+        <p>Genres:</p>
+        <ul>
+            {% for genre in movie.genres.all %}
+                <li><a href="{% url 'genre_detail' genre.get_url_slug %}">{{ genre.get_name_display }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="{% url 'movie_detail' movie.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Libí se">
+    </form>
+{% endblock body %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_title %}Homepage{% endblock page_title %}
+
+{% block body %}
+    <h1>filmy:</h1><br>
+    {% for movie in movies %}
+        Jméno: <a href="{% url 'movie_detail' movie.pk %}">{{ movie.name }} </a> - Likes: {{ movie.likes }} <br>
+    {% endfor %}
+{% endblock body %}
