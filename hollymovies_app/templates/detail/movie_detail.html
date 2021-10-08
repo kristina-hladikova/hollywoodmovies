@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block page_title %}Movie Detail Title{% endblock page_title %}
+{% block page_title %}Movie Detail{% endblock page_title %}
 
 {% block body %}
-    <h1>Detail filmu: {{ movie.name }}</h1>
+    <h1>Movie: {{ movie.name }}</h1>
     <h4>Likes: {{ movie.likes }}</h4>
 
     {% if movie.description %}
@@ -15,6 +15,15 @@
         <ul>
             {% for genre in movie.genres.all %}
                 <li><a href="{% url 'genre_detail' genre.get_url_slug %}">{{ genre.get_name_display }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if movie.actors.all %}
+        <p>Actors:</p>
+        <ul>
+            {% for actor in movie.actors.all %}
+                <li><a href="{% url 'actor_detail' actor.get_url_slug %}">{{ actor.get_name_display }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}

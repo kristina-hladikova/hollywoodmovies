@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
-{% block page_title %}Genre Detail{% endblock page_title %}
+{% block page_title %}Actor Detail{% endblock page_title %}
 
 {% block body %}
-    <h1>Detail Genre: {{ genre.name }}</h1>
-    <h4>Creator: {{ creators.1 }}</h4>
-    <h4>Page description: {{ page_description.short_description }}</h4>
+    <h1>Actor: {{ actor.name }}</h1>
+    <h4>Description: {{ actor.description }}</h4>
 
-    {% if genre.movies.all %}
+    {% if actor.movies.all %}
         <p>Movies:</p>
         <ul>
             {% for movie in movies %}

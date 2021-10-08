@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
-from hollymovies_app.models import Movie, Genre, GENRE_NAME_TO_NAME_SHORTCUT_MAPPING
+from hollymovies_app.models import Movie, Genre, Actor, GENRE_NAME_TO_NAME_SHORTCUT_MAPPING
 
 
 def homepage(request):
@@ -9,6 +9,7 @@ def homepage(request):
     context = {
         'movies': movies_db,
         'horror_genre': Genre.HORROR,
+        'comedy_genre': Genre.COMEDY,
     }
     return TemplateResponse(request, 'homepage.html', context=context)
 
@@ -41,6 +42,20 @@ def genre_detail(request, genre_name):
     }
     return TemplateResponse(request, 'detail/genre_detail.html', context=context)
 
+
+
+def actor_detail(request, actor_name):
+    actor = Actor.objects.get(name=actor_name)
+    description = actor.description
+    movies = actor.movies.all()
+
+    context = {
+        'actor': actor,
+        'description': description,
+        'movies': movies,
+
+    }
+    return TemplateResponse(request, 'detail/actor_detail.html', context=context)
 
 def homepage_kristi(request):
     return HttpResponse('<h1>Hollymovies Homepage Kristi</h1>')
