@@ -5,6 +5,7 @@
 {% block body %}
     <h1>Actor: {{ actor.name }}</h1>
     <h4>Description: {{ actor.description }}</h4>
+    <p>Oscars: {{ actor.oscars }}</p>
 
     {% if actor.movies.all %}
         <p>Movies:</p>

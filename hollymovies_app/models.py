@@ -65,6 +65,7 @@ class Person(BaseModel):
 class Actor(Person):
     name = models.CharField(max_length=512)
     movies = models.ManyToManyField(Movie, related_name='actors')
+    oscars = models.IntegerField(default=0)
 
 
     def get_name_display(self):
@@ -73,6 +74,6 @@ class Actor(Person):
     def __str__(self):
         return f'{self.get_name_display()} : {self.id}'
 
-    def get_url_slug(self):
-        return self.get_name_display().lower()
+    # def get_url_slug(self):
+    #     return self.get_name_display().lower()
 

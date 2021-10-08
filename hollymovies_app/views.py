@@ -45,7 +45,8 @@ def genre_detail(request, genre_name):
 
 
 def actor_detail(request, actor_name):
-    actor = Actor.objects.get(name=actor_name)
+    pk = Actor.objects.get(name=actor_name).id
+    actor = Actor.objects.get(id=pk)
     description = actor.description
     movies = actor.movies.all()
 

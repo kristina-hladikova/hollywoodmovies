@@ -23,7 +23,7 @@
         <p>Actors:</p>
         <ul>
             {% for actor in movie.actors.all %}
-                <li><a href="{% url 'actor_detail' actor.get_url_slug %}">{{ actor.get_name_display }}</a></li>
+                <li><a href="{% url 'actor_detail' actor.get_name_display %}">{{ actor.get_name_display }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
