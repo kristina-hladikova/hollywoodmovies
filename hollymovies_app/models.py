@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class BaseModel(models.Model):
@@ -13,6 +14,11 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+# class Profile(BaseModel):
+#     secondary_email = models.EmailField()
+#     user = models.OneToOneField('User', on_delete=None)
 
 
 class Genre(BaseModel):
@@ -66,7 +72,8 @@ class Actor(Person):
     name = models.CharField(max_length=512)
     movies = models.ManyToManyField(Movie, related_name='actors')
     oscars = models.IntegerField(default=0)
-
+    likes = models.IntegerField(default=0)
+    # image = models.aggregates.
 
     def get_name_display(self):
         return self.name

@@ -10,8 +10,10 @@ class MovieAdmin(admin.ModelAdmin):
 class GenreAdmin(admin.ModelAdmin):
     list_display = ['name', ]
 
+
 class ActorAdmin(admin.ModelAdmin):
     list_display = ['name', ]
+
 
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Genre, GenreAdmin)

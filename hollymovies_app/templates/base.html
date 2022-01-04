@@ -4,11 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block page_title %}Default Title{% endblock page_title %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+{#    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">#}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
     {% block additional_css %}{% endblock additional_css %}
 </head>
 <body>
 <h1><a href="{% url 'homepage' %}">Homepage</a></h1>
+<h4><a href="{% url 'contact' %}">Contact us</a></h4>
+<h4><a href="{% url 'create_movie' %}">Create New Movie</a></h4>
+<h4><a href="{% url 'create_actor' %}">Create Actor</a></h4>
+<h4><a href="{% url 'login' %}">Login</a></h4>
+<h4><a href="{% url 'change_password' %}">Change Password</a></h4>
+<h4><a href="{% url 'logout' %}">Logout</a></h4>
+<h4><a href="{% url 'register' %}">Register</a></h4>
+<h4><a href="{% url 'premium_page' %}">Premium Page</a></h4>
+<h4>Username: {% if request.user %}{{ request.user.username }}
+                {% else %} -
+{% endif %}</h4>
 {% block body %}{% endblock body %}
 </body>
 </html>
